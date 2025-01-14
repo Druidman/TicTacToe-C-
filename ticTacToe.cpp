@@ -101,18 +101,19 @@ void placeMove(char board[3][3], char currPlayer){
     if (!checkValidMove(board,row,column)){
         cout << "\nZły ruch jeszcze raz!\n";
         placeMove(board,currPlayer);
+        return ; 
     }
     board[row-1][column-1] = currPlayer;
 }
 
 bool checkValidMove(char board[3][3],int row, int column){
-    if (row < 0 || column < 0){
+    if (row <= 0 || column <= 0){
         return false;
     }
     if (row > 3 || column > 3){
         return false;
     }
-    if (board[row][column] != ' '){
+    if (board[row-1][column-1] != ' '){
         return false;
     }
     return true;
